@@ -515,7 +515,7 @@ For Laravel 4+ please use version 2.0.10.
 
 **Laravel 4**
 
-    php artisan config:publish pragmarx/tracker
+    php artisan config:publish netesy/tracker
 
 **Laravel 5**
 
