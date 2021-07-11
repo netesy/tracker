@@ -1,6 +1,6 @@
 <?php
 
-namespace PragmaRX\Tracker\Data;
+namespace Netesy\Tracker\Data;
 
 interface RepositoryManagerInterface
 {

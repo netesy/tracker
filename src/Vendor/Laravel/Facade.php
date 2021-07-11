@@ -1,6 +1,6 @@
 <?php
 
-namespace PragmaRX\Tracker\Vendor\Laravel;
+namespace Netesy\Tracker\Vendor\Laravel;
 
 use Illuminate\Support\Facades\Facade as IlluminateFacade;
 

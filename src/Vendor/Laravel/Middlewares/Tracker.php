@@ -1,6 +1,6 @@
 <?php
 
-namespace PragmaRX\Tracker\Vendor\Laravel\Middlewares;
+namespace Netesy\Tracker\Vendor\Laravel\Middlewares;
 
 use Closure;
 use Config;

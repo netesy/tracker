@@ -1,9 +1,9 @@
 <?php
 
-namespace PragmaRX\Tracker\Vendor\Laravel\Support;
+namespace Netesy\Tracker\Vendor\Laravel\Support;
 
 use Illuminate\Support\Facades\Request;
-use PragmaRX\Tracker\Support\Minutes;
+use Netesy\Tracker\Support\Minutes;
 use Session as LaravelSession;
 
 class Session
@@ -32,7 +32,7 @@ class Session
         if (Request::has($variable)) {
             $value = Request::get($variable);
         } else {
-            $value = LaravelSession::get('tracker.stats.'.$variable, $default);
+            $value = LaravelSession::get('tracker.stats.' . $variable, $default);
         }
 
         return $value;

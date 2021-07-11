@@ -1,9 +1,9 @@
 <?php
 
-namespace PragmaRX\Tracker\Data\Repositories;
+namespace Netesy\Tracker\Data\Repositories;
 
-use PragmaRX\Support\Config;
-use PragmaRX\Tracker\Eventing\EventStorage;
+use Netesy\Support\Config;
+use Netesy\Tracker\Eventing\EventStorage;
 
 class Event extends Repository
 {
@@ -23,12 +23,12 @@ class Event extends Repository
     private $logRepository;
 
     /**
-     * @var \PragmaRX\Support\Config
+     * @var \Netesy\Support\Config
      */
     private $config;
 
     /**
-     * @var \PragmaRX\Tracker\Eventing\EventStorage
+     * @var \Netesy\Tracker\Eventing\EventStorage
      */
     private $eventStorage;
 
@@ -83,7 +83,7 @@ class Event extends Repository
             &&
 
             !$this->config->get('log_only_events')
-                || in_array($event['event'], $this->config->get('log_only_events'));
+            || in_array($event['event'], $this->config->get('log_only_events'));
     }
 
     public function logEvent($event)

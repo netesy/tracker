@@ -1,6 +1,6 @@
 <?php
 
-namespace PragmaRX\Tracker\Repositories;
+namespace Netesy\Tracker\Repositories;
 
 class Message
 {

@@ -1,4 +1,4 @@
-@extends('pragmarx/tracker::html')
+@extends('Netesy/tracker::html')
 
 @section('body')
     <div id="wrapper">

@@ -1,6 +1,6 @@
 <?php
 
-use PragmaRX\Tracker\Support\Migration;
+use Netesy\Tracker\Support\Migration;
 
 class CreateTrackerConnectionsTable extends Migration
 {

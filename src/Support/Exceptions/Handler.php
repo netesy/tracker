@@ -1,9 +1,9 @@
 <?php
 
-namespace PragmaRX\Tracker\Support\Exceptions;
+namespace Netesy\Tracker\Support\Exceptions;
 
 use Illuminate\Contracts\Debug\ExceptionHandler;
-use PragmaRX\Tracker\Tracker;
+use Netesy\Tracker\Tracker;
 use Throwable;
 
 class Handler implements ExceptionHandler

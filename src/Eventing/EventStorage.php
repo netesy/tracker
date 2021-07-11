@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: AntonioCarlos
@@ -6,7 +7,7 @@
  * Time: 18:30.
  */
 
-namespace PragmaRX\Tracker\Eventing;
+namespace Netesy\Tracker\Eventing;
 
 class EventStorage
 {

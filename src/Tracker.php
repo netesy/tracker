@@ -1,16 +1,16 @@
 <?php
 
-namespace PragmaRX\Tracker;
+namespace Netesy\Tracker;
 
 use Illuminate\Foundation\Application as Laravel;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Router;
-use PragmaRX\Support\Config;
-use PragmaRX\Support\GeoIp\Updater as GeoIpUpdater;
-use PragmaRX\Support\IpAddress;
-use PragmaRX\Tracker\Data\RepositoryManager as DataRepositoryManager;
-use PragmaRX\Tracker\Repositories\Message as MessageRepository;
-use PragmaRX\Tracker\Support\Minutes;
+use Netesy\Support\Config;
+use Netesy\Support\GeoIp\Updater as GeoIpUpdater;
+use Netesy\Support\IpAddress;
+use Netesy\Tracker\Data\RepositoryManager as DataRepositoryManager;
+use Netesy\Tracker\Repositories\Message as MessageRepository;
+use Netesy\Tracker\Support\Minutes;
 use Psr\Log\LoggerInterface;
 
 class Tracker
@@ -227,7 +227,7 @@ class Tracker
     protected function logUntrackable($item)
     {
         if ($this->config->get('log_untrackable_sessions') && !isset($this->loggedItems[$item])) {
-            $this->getLogger()->warning('TRACKER (unable to track item): '.$item);
+            $this->getLogger()->warning('TRACKER (unable to track item): ' . $item);
 
             $this->loggedItems[$item] = $item;
         }
@@ -304,14 +304,14 @@ class Tracker
     public function isTrackable()
     {
         return $this->config->get('enabled') &&
-                $this->logIsEnabled() &&
-                $this->allowConsole() &&
-                $this->parserIsAvailable() &&
-                $this->isTrackableIp() &&
-                $this->isTrackableEnvironment() &&
-                $this->routeIsTrackable() &&
-                $this->pathIsTrackable() &&
-                $this->notRobotOrTrackable();
+            $this->logIsEnabled() &&
+            $this->allowConsole() &&
+            $this->parserIsAvailable() &&
+            $this->isTrackableIp() &&
+            $this->isTrackableEnvironment() &&
+            $this->routeIsTrackable() &&
+            $this->pathIsTrackable() &&
+            $this->notRobotOrTrackable();
     }
 
     public function isTrackableEnvironment()
@@ -322,7 +322,7 @@ class Tracker
         );
 
         if (!$trackable) {
-            $this->logUntrackable('environment '.$this->laravel->environment().' is not trackable.');
+            $this->logUntrackable('environment ' . $this->laravel->environment() . ' is not trackable.');
         }
 
         return $trackable;
@@ -336,7 +336,7 @@ class Tracker
         );
 
         if (!$trackable) {
-            $this->logUntrackable($ipAddress.' is not trackable.');
+            $this->logUntrackable($ipAddress . ' is not trackable.');
         }
 
         return $trackable;
@@ -424,8 +424,7 @@ class Tracker
 
     public function allowConsole()
     {
-        return
-            (!$this->laravel->runningInConsole()) ||
+        return (!$this->laravel->runningInConsole()) ||
             $this->config->get('console_log_enabled', false);
     }
 
@@ -447,7 +446,7 @@ class Tracker
         }
 
         if (!$trackable = $this->dataRepositoryManager->routeIsTrackable($this->route)) {
-            $this->logUntrackable('route '.$this->route->getCurrentRoute()->getName().' is not trackable.');
+            $this->logUntrackable('route ' . $this->route->getCurrentRoute()->getName() . ' is not trackable.');
         }
 
         return $trackable;
@@ -456,7 +455,7 @@ class Tracker
     public function pathIsTrackable()
     {
         if (!$trackable = $this->dataRepositoryManager->pathIsTrackable($this->request->path())) {
-            $this->logUntrackable('path '.$this->request->path().' is not trackable.');
+            $this->logUntrackable('path ' . $this->request->path() . ' is not trackable.');
         }
 
         return $trackable;

@@ -1,7 +1,7 @@
 <?php
 
-use PragmaRX\Tracker\Support\Migration;
-use PragmaRX\Tracker\Vendor\Laravel\Models\Agent;
+use Netesy\Tracker\Support\Migration;
+use Netesy\Tracker\Vendor\Laravel\Models\Agent;
 
 class AddAgentNameHash extends Migration
 {

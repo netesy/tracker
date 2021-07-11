@@ -1,6 +1,6 @@
 <?php
 
-namespace PragmaRX\Tracker\Support\Exceptions;
+namespace Netesy\Tracker\Support\Exceptions;
 
 use ErrorException;
 

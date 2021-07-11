@@ -6,7 +6,7 @@
 
 @section('inline-javascript')
     @include(
-        'pragmarx/tracker::_datatables',
+        'Netesy/tracker::_datatables',
         array(
             'datatables_ajax_route' => route('tracker.stats.api.errors'),
             'datatables_columns' =>

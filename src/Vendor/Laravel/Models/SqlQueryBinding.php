@@ -1,6 +1,6 @@
 <?php
 
-namespace PragmaRX\Tracker\Vendor\Laravel\Models;
+namespace Netesy\Tracker\Vendor\Laravel\Models;
 
 class SqlQueryBinding extends Base
 {

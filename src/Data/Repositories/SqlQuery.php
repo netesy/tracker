@@ -1,8 +1,8 @@
 <?php
 
-namespace PragmaRX\Tracker\Data\Repositories;
+namespace Netesy\Tracker\Data\Repositories;
 
-use PragmaRX\Support\Config;
+use Netesy\Support\Config;
 
 class SqlQuery extends Repository
 {
@@ -34,7 +34,7 @@ class SqlQuery extends Repository
     private $logRepository;
 
     /**
-     * @var \PragmaRX\Support\Config
+     * @var \Netesy\Support\Config
      */
     private $config;
 

@@ -1,10 +1,10 @@
 <?php
 
-namespace PragmaRX\Tracker\Data\Repositories;
+namespace Netesy\Tracker\Data\Repositories;
 
 use Carbon\Carbon;
-use PragmaRX\Support\Config;
-use PragmaRX\Support\PhpSession;
+use Netesy\Support\Config;
+use Netesy\Support\PhpSession;
 use Ramsey\Uuid\Uuid as UUID;
 
 class Session extends Repository
@@ -28,7 +28,7 @@ class Session extends Repository
 
     public function findByUuid($uuid)
     {
-        list($model, $cacheKey) = $this->cache->findCached($uuid, 'uuid', 'PragmaRX\Tracker\Vendor\Laravel\Models\Session');
+        list($model, $cacheKey) = $this->cache->findCached($uuid, 'uuid', 'Netesy\Tracker\Vendor\Laravel\Models\Session');
 
         if (!$model) {
             $model = $this->newQuery()->where('uuid', $uuid)->with($this->relations)->first();
@@ -202,8 +202,8 @@ class Session extends Repository
         $data = $this->session->get($this->getSessionKey());
 
         return $variable
-                ? (isset($data[$variable]) ? $data[$variable] : null)
-                : $data;
+            ? (isset($data[$variable]) ? $data[$variable] : null)
+            : $data;
     }
 
     private function putSessionData($data)
@@ -219,9 +219,9 @@ class Session extends Repository
     private function getSessions()
     {
         return $this
-                ->newQuery()
-                ->with($this->relations)
-                ->orderBy('updated_at', 'desc');
+            ->newQuery()
+            ->with($this->relations)
+            ->orderBy('updated_at', 'desc');
     }
 
     public function all()

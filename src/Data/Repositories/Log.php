@@ -1,6 +1,6 @@
 <?php
 
-namespace PragmaRX\Tracker\Data\Repositories;
+namespace Netesy\Tracker\Data\Repositories;
 
 class Log extends Repository
 {
@@ -41,8 +41,8 @@ class Log extends Repository
     public function bySession($sessionId, $results = true)
     {
         $query = $this
-                    ->getModel()
-                    ->where('session_id', $sessionId)->orderBy('updated_at', 'desc');
+            ->getModel()
+            ->where('session_id', $sessionId)->orderBy('updated_at', 'desc');
 
         if ($results) {
             return $query->get();

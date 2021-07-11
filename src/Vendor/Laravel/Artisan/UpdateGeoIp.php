@@ -1,6 +1,6 @@
 <?php
 
-namespace PragmaRX\Tracker\Vendor\Laravel\Artisan;
+namespace Netesy\Tracker\Vendor\Laravel\Artisan;
 
 class UpdateGeoIp extends Base
 {

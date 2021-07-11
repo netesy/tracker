@@ -1,6 +1,6 @@
 <?php
 
-namespace PragmaRX\Tracker\Data\Repositories;
+namespace Netesy\Tracker\Data\Repositories;
 
 abstract class Repository implements RepositoryInterface
 {
@@ -17,7 +17,7 @@ abstract class Repository implements RepositoryInterface
     protected $relations;
 
     /**
-     * @var \PragmaRX\Tracker\Support\Cache
+     * @var \Netesy\Tracker\Support\Cache
      */
     protected $cache;
 

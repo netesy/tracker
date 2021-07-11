@@ -1,39 +1,39 @@
 <?php
 
-namespace PragmaRX\Tracker\Data;
+namespace Netesy\Tracker\Data;
 
 use Illuminate\Routing\Router as IlluminateRouter;
 use Illuminate\Session\Store as IlluminateSession;
-use PragmaRX\Support\Config;
-use PragmaRX\Support\GeoIp\GeoIp;
-use PragmaRX\Tracker\Data\Repositories\Agent;
-use PragmaRX\Tracker\Data\Repositories\Connection;
-use PragmaRX\Tracker\Data\Repositories\Cookie;
-use PragmaRX\Tracker\Data\Repositories\Device;
-use PragmaRX\Tracker\Data\Repositories\Domain;
-use PragmaRX\Tracker\Data\Repositories\Error;
-use PragmaRX\Tracker\Data\Repositories\Event;
-use PragmaRX\Tracker\Data\Repositories\EventLog;
-use PragmaRX\Tracker\Data\Repositories\GeoIp as GeoIpRepository;
-use PragmaRX\Tracker\Data\Repositories\Language;
-use PragmaRX\Tracker\Data\Repositories\Log;
-use PragmaRX\Tracker\Data\Repositories\Path;
-use PragmaRX\Tracker\Data\Repositories\Query;
-use PragmaRX\Tracker\Data\Repositories\QueryArgument;
-use PragmaRX\Tracker\Data\Repositories\Referer;
-use PragmaRX\Tracker\Data\Repositories\Route;
-use PragmaRX\Tracker\Data\Repositories\RoutePath;
-use PragmaRX\Tracker\Data\Repositories\RoutePathParameter;
-use PragmaRX\Tracker\Data\Repositories\Session;
-use PragmaRX\Tracker\Data\Repositories\SqlQuery;
-use PragmaRX\Tracker\Data\Repositories\SqlQueryBinding;
-use PragmaRX\Tracker\Data\Repositories\SqlQueryBindingParameter;
-use PragmaRX\Tracker\Data\Repositories\SqlQueryLog;
-use PragmaRX\Tracker\Data\Repositories\SystemClass;
-use PragmaRX\Tracker\Services\Authentication;
-use PragmaRX\Tracker\Support\CrawlerDetector;
-use PragmaRX\Tracker\Support\LanguageDetect;
-use PragmaRX\Tracker\Support\MobileDetect;
+use Netesy\Support\Config;
+use Netesy\Support\GeoIp\GeoIp;
+use Netesy\Tracker\Data\Repositories\Agent;
+use Netesy\Tracker\Data\Repositories\Connection;
+use Netesy\Tracker\Data\Repositories\Cookie;
+use Netesy\Tracker\Data\Repositories\Device;
+use Netesy\Tracker\Data\Repositories\Domain;
+use Netesy\Tracker\Data\Repositories\Error;
+use Netesy\Tracker\Data\Repositories\Event;
+use Netesy\Tracker\Data\Repositories\EventLog;
+use Netesy\Tracker\Data\Repositories\GeoIp as GeoIpRepository;
+use Netesy\Tracker\Data\Repositories\Language;
+use Netesy\Tracker\Data\Repositories\Log;
+use Netesy\Tracker\Data\Repositories\Path;
+use Netesy\Tracker\Data\Repositories\Query;
+use Netesy\Tracker\Data\Repositories\QueryArgument;
+use Netesy\Tracker\Data\Repositories\Referer;
+use Netesy\Tracker\Data\Repositories\Route;
+use Netesy\Tracker\Data\Repositories\RoutePath;
+use Netesy\Tracker\Data\Repositories\RoutePathParameter;
+use Netesy\Tracker\Data\Repositories\Session;
+use Netesy\Tracker\Data\Repositories\SqlQuery;
+use Netesy\Tracker\Data\Repositories\SqlQueryBinding;
+use Netesy\Tracker\Data\Repositories\SqlQueryBindingParameter;
+use Netesy\Tracker\Data\Repositories\SqlQueryLog;
+use Netesy\Tracker\Data\Repositories\SystemClass;
+use Netesy\Tracker\Services\Authentication;
+use Netesy\Tracker\Support\CrawlerDetector;
+use Netesy\Tracker\Support\LanguageDetect;
+use Netesy\Tracker\Support\MobileDetect;
 
 class RepositoryManager implements RepositoryManagerInterface
 {
@@ -144,7 +144,7 @@ class RepositoryManager implements RepositoryManagerInterface
     private $languageDetect;
 
     /**
-     * @param \PragmaRX\Tracker\Support\UserAgentParser|null $userAgentParser
+     * @param \Netesy\Tracker\Support\UserAgentParser|null $userAgentParser
      */
     public function __construct(
         GeoIP $geoIp,
@@ -485,7 +485,7 @@ class RepositoryManager implements RepositoryManagerInterface
             $domain = array_pop($parts);
 
             if (count($parts) > 0) {
-                $domain = array_pop($parts).'.'.$domain;
+                $domain = array_pop($parts) . '.' . $domain;
             }
 
             $domain_id = $this->getDomainId($domain);
@@ -566,7 +566,7 @@ class RepositoryManager implements RepositoryManagerInterface
             return $name;
         }
 
-        return '/'.$route->current()->uri();
+        return '/' . $route->current()->uri();
     }
 
     /**

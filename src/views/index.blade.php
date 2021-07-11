@@ -5,5 +5,5 @@
 @stop
 
 @section('inline-javascript')
-    @include('pragmarx/tracker::_datatables', $datatables_data)
+    @include('Netesy/tracker::_datatables', $datatables_data)
 @stop

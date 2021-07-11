@@ -1,6 +1,6 @@
 <?php
 
-namespace PragmaRX\Tracker\Support;
+namespace Netesy\Tracker\Support;
 
 use Illuminate\Filesystem\Filesystem as IlluminateFilesystem;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace PragmaRX\Tracker\Support;
+namespace Netesy\Tracker\Support;
 
 use UAParser\Parser;
 
@@ -33,9 +33,9 @@ class UserAgentParser
 
     public function getOperatingSystemVersion()
     {
-        return    $this->operatingSystem->major.
-                ($this->operatingSystem->minor !== null ? '.'.$this->operatingSystem->minor : '').
-                ($this->operatingSystem->patch !== null ? '.'.$this->operatingSystem->patch : '');
+        return    $this->operatingSystem->major .
+            ($this->operatingSystem->minor !== null ? '.' . $this->operatingSystem->minor : '') .
+            ($this->operatingSystem->patch !== null ? '.' . $this->operatingSystem->patch : '');
     }
 
     protected function getUserAgent($userAgent)
@@ -53,8 +53,8 @@ class UserAgentParser
 
     public function getUserAgentVersion()
     {
-        return  $this->userAgent->major.
-                ($this->userAgent->minor !== null ? '.'.$this->userAgent->minor : '').
-                ($this->userAgent->patch !== null ? '.'.$this->userAgent->patch : '');
+        return  $this->userAgent->major .
+            ($this->userAgent->minor !== null ? '.' . $this->userAgent->minor : '') .
+            ($this->userAgent->patch !== null ? '.' . $this->userAgent->patch : '');
     }
 }

@@ -1,9 +1,9 @@
 <?php
 
-namespace PragmaRX\Tracker\Services;
+namespace Netesy\Tracker\Services;
 
 use Illuminate\Foundation\Application;
-use PragmaRX\Support\Config as Config;
+use Netesy\Support\Config as Config;
 
 class Authentication
 {

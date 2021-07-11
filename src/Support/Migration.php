@@ -1,10 +1,10 @@
 <?php
 
-namespace PragmaRX\Tracker\Support;
+namespace Netesy\Tracker\Support;
 
-use PragmaRX\Support\Migration as PragmaRxMigration;
+use Netesy\Support\Migration as NetesyMigration;
 
-abstract class Migration extends PragmaRxMigration
+abstract class Migration extends NetesyMigration
 {
     protected function checkConnection()
     {

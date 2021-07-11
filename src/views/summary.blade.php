@@ -18,7 +18,7 @@
 		</div>
 	</div><!-- /.row -->
 
-	@include('pragmarx/tracker::_summaryPiechart')
+	@include('Netesy/tracker::_summaryPiechart')
 @stop
 
 @section('inline-javascript')

@@ -1,6 +1,6 @@
 # Laravel Stats Tracker
 
-[![Latest Stable Version](https://img.shields.io/packagist/v/pragmarx/tracker.svg?style=flat-square)](https://packagist.org/packages/pragmarx/tracker) [![License](https://img.shields.io/badge/license-BSD_3_Clause-brightgreen.svg?style=flat-square)](LICENSE) [![Downloads](https://img.shields.io/packagist/dt/pragmarx/tracker.svg?style=flat-square)](https://packagist.org/packages/pragmarx/tracker)
+[![Latest Stable Version](https://img.shields.io/packagist/v/Netesy/tracker.svg?style=flat-square)](https://packagist.org/packages/Netesy/tracker) [![License](https://img.shields.io/badge/license-BSD_3_Clause-brightgreen.svg?style=flat-square)](LICENSE) [![Downloads](https://img.shields.io/packagist/dt/Netesy/tracker.svg?style=flat-square)](https://packagist.org/packages/Netesy/tracker)
 
 ### Tracker gathers a lot of information from your requests to identify and store:
 
@@ -286,11 +286,11 @@ All tables are prefixed by `tracker_`, and here's an extract of some of them, sh
 | id | code | message                                                                                                                                                                                                                      |
 +----+------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | 1  | 404  |                                                                                                                                                                                                                              |
-| 2  | 500  | Call to undefined method PragmaRX\Tracker\Tracker::sessionLog()                                                                                                                                                              |
+| 2  | 500  | Call to undefined method Netesy\Tracker\Tracker::sessionLog()                                                                                                                                                              |
 | 3  | 500  | Trying to get property of non-object (View: /home/forge/stage.antoniocarlosribeiro.com/app/views/admin/tracker/log.blade.php)                                                                                                |
 | 4  | 500  | syntax error, unexpected 'foreach' (T_FOREACH)                                                                                                                                                                               |
-| 5  | 500  | Call to undefined method PragmaRX\Tracker\Tracker::pageViewsByCountry()                                                                                                                                                      |
-| 6  | 500  | Class PragmaRX\Firewall\Vendor\Laravel\Artisan\Base contains 1 abstract method and must therefore be declared abstract or implement the remaining methods (Illuminate\Console\Command::fire)                                 |
+| 5  | 500  | Call to undefined method Netesy\Tracker\Tracker::pageViewsByCountry()                                                                                                                                                      |
+| 6  | 500  | Class Netesy\Firewall\Vendor\Laravel\Artisan\Base contains 1 abstract method and must therefore be declared abstract or implement the remaining methods (Illuminate\Console\Command::fire)                                 |
 | 7  | 405  |                                                                                                                                                                                                                              |
 | 8  | 500  | Trying to get property of non-object                                                                                                                                                                                         |
 | 9  | 500  | Missing argument 2 for Illuminate\Database\Eloquent\Model::setAttribute(), called in /home/forge/stage.antoniocarlosribeiro.com/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php on line 2444 and defined |
@@ -497,18 +497,18 @@ For Laravel 4+ please use version 2.0.10.
 
 #### Require the `tracker` package by **executing** the following command in your command line:
 
-    composer require pragmarx/tracker
+    composer require Netesy/tracker
 
 #### Add the service provider to your app/config/app.php:
 
 ```php
- PragmaRX\Tracker\Vendor\Laravel\ServiceProvider::class,
+ Netesy\Tracker\Vendor\Laravel\ServiceProvider::class,
 ```
 
 #### Add the alias to the facade on your app/config/app.php:
 
 ```php
-'Tracker' => 'PragmaRX\Tracker\Vendor\Laravel\Facade',
+'Tracker' => 'Netesy\Tracker\Vendor\Laravel\Facade',
 ```
 
 #### Publish tracker configuration:
@@ -519,7 +519,7 @@ For Laravel 4+ please use version 2.0.10.
 
 **Laravel 5**
 
-    php artisan vendor:publish --provider="PragmaRX\Tracker\Vendor\Laravel\ServiceProvider"
+    php artisan vendor:publish --provider="Netesy\Tracker\Vendor\Laravel\ServiceProvider"
 
 #### Enable the Middleware (Laravel 5)
 
@@ -534,7 +534,7 @@ Open the newly published config file found at `app/config/tracker.php` and enabl
 Open the file `app/Http/Kernel.php` and add the following to your web middlewares:
 
 ```php
-\PragmaRX\Tracker\Vendor\Laravel\Middlewares\Tracker::class,
+\Netesy\Tracker\Vendor\Laravel\Middlewares\Tracker::class,
 ```
 
 #### Enable Tracker in your config.php (Laravel 4) or tracker.php (Laravel 5)
@@ -693,7 +693,7 @@ If you get an error like:
 
 You probably need to change: 
 
-    'user_model' => 'PragmaRX\Tracker\Vendor\Laravel\Models\User',
+    'user_model' => 'Netesy\Tracker\Vendor\Laravel\Models\User',
 
 To create (or use a current) a User model:
 
@@ -710,12 +710,12 @@ In your kernel
     protected $middlewareGroups = [
         'web' => [
             .......
-            \PragmaRX\Tracker\Vendor\Laravel\Middlewares\Tracker::class,
+            \Netesy\Tracker\Vendor\Laravel\Middlewares\Tracker::class,
         ],
 
         'api' => [
            .......
-            \PragmaRX\Tracker\Vendor\Laravel\Middlewares\Tracker::class,
+            \Netesy\Tracker\Vendor\Laravel\Middlewares\Tracker::class,
         ],
     ];
 

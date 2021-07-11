@@ -1,6 +1,6 @@
 <?php
 
-namespace PragmaRX\Tracker\Data\Repositories;
+namespace Netesy\Tracker\Data\Repositories;
 
 class SqlQueryBindingParameter extends Repository
 {

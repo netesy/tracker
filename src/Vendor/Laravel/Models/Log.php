@@ -1,6 +1,6 @@
 <?php
 
-namespace PragmaRX\Tracker\Vendor\Laravel\Models;
+namespace Netesy\Tracker\Vendor\Laravel\Models;
 
 class Log extends Base
 {
@@ -87,12 +87,12 @@ class Log extends Base
     public function errors($minutes, $results)
     {
         $query = $this
-                    ->with('error')
-                    ->with('session')
-                    ->with('path')
-                    ->period($minutes, 'tracker_log')
-                    ->whereNotNull('error_id')
-                    ->orderBy('created_at', 'desc');
+            ->with('error')
+            ->with('session')
+            ->with('path')
+            ->period($minutes, 'tracker_log')
+            ->whereNotNull('error_id')
+            ->orderBy('created_at', 'desc');
 
         if ($results) {
             return $query->get();
@@ -104,18 +104,18 @@ class Log extends Base
     public function allByRouteName($name, $minutes = null)
     {
         $result = $this
-                    ->join('tracker_route_paths', 'tracker_route_paths.id', '=', 'tracker_log.route_path_id')
+            ->join('tracker_route_paths', 'tracker_route_paths.id', '=', 'tracker_log.route_path_id')
 
-                    ->leftJoin(
-                        'tracker_route_path_parameters',
-                        'tracker_route_path_parameters.route_path_id',
-                        '=',
-                        'tracker_route_paths.id'
-                    )
+            ->leftJoin(
+                'tracker_route_path_parameters',
+                'tracker_route_path_parameters.route_path_id',
+                '=',
+                'tracker_route_paths.id'
+            )
 
-                    ->join('tracker_routes', 'tracker_routes.id', '=', 'tracker_route_paths.route_id')
+            ->join('tracker_routes', 'tracker_routes.id', '=', 'tracker_route_paths.route_id')
 
-                    ->where('tracker_routes.name', $name);
+            ->where('tracker_routes.name', $name);
 
         if ($minutes) {
             $result->period($minutes, 'tracker_log');

@@ -1,51 +1,51 @@
 <?php
 
-namespace PragmaRX\Tracker\Vendor\Laravel;
+namespace Netesy\Tracker\Vendor\Laravel;
 
-use PragmaRX\Support\GeoIp\GeoIp;
-use PragmaRX\Support\PhpSession;
-use PragmaRX\Support\ServiceProvider as PragmaRXServiceProvider;
-use PragmaRX\Tracker\Data\Repositories\Agent;
-use PragmaRX\Tracker\Data\Repositories\Connection;
-use PragmaRX\Tracker\Data\Repositories\Cookie;
-use PragmaRX\Tracker\Data\Repositories\Device;
-use PragmaRX\Tracker\Data\Repositories\Domain;
-use PragmaRX\Tracker\Data\Repositories\Error;
-use PragmaRX\Tracker\Data\Repositories\Event;
-use PragmaRX\Tracker\Data\Repositories\EventLog;
-use PragmaRX\Tracker\Data\Repositories\GeoIp as GeoIpRepository;
-use PragmaRX\Tracker\Data\Repositories\Language;
-use PragmaRX\Tracker\Data\Repositories\Log;
-use PragmaRX\Tracker\Data\Repositories\Path;
-use PragmaRX\Tracker\Data\Repositories\Query;
-use PragmaRX\Tracker\Data\Repositories\QueryArgument;
-use PragmaRX\Tracker\Data\Repositories\Referer;
-use PragmaRX\Tracker\Data\Repositories\Route;
-use PragmaRX\Tracker\Data\Repositories\RoutePath;
-use PragmaRX\Tracker\Data\Repositories\RoutePathParameter;
-use PragmaRX\Tracker\Data\Repositories\Session;
-use PragmaRX\Tracker\Data\Repositories\SqlQuery;
-use PragmaRX\Tracker\Data\Repositories\SqlQueryBinding;
-use PragmaRX\Tracker\Data\Repositories\SqlQueryBindingParameter;
-use PragmaRX\Tracker\Data\Repositories\SqlQueryLog;
-use PragmaRX\Tracker\Data\Repositories\SystemClass;
-use PragmaRX\Tracker\Data\RepositoryManager;
-use PragmaRX\Tracker\Eventing\EventStorage;
-use PragmaRX\Tracker\Repositories\Message as MessageRepository;
-use PragmaRX\Tracker\Services\Authentication;
-use PragmaRX\Tracker\Support\Cache;
-use PragmaRX\Tracker\Support\CrawlerDetector;
-use PragmaRX\Tracker\Support\Exceptions\Handler as TrackerExceptionHandler;
-use PragmaRX\Tracker\Support\LanguageDetect;
-use PragmaRX\Tracker\Support\MobileDetect;
-use PragmaRX\Tracker\Support\UserAgentParser;
-use PragmaRX\Tracker\Tracker;
-use PragmaRX\Tracker\Vendor\Laravel\Artisan\Tables as TablesCommand;
-use PragmaRX\Tracker\Vendor\Laravel\Artisan\UpdateGeoIp;
+use Netesy\Support\GeoIp\GeoIp;
+use Netesy\Support\PhpSession;
+use Netesy\Support\ServiceProvider as NetesyServiceProvider;
+use Netesy\Tracker\Data\Repositories\Agent;
+use Netesy\Tracker\Data\Repositories\Connection;
+use Netesy\Tracker\Data\Repositories\Cookie;
+use Netesy\Tracker\Data\Repositories\Device;
+use Netesy\Tracker\Data\Repositories\Domain;
+use Netesy\Tracker\Data\Repositories\Error;
+use Netesy\Tracker\Data\Repositories\Event;
+use Netesy\Tracker\Data\Repositories\EventLog;
+use Netesy\Tracker\Data\Repositories\GeoIp as GeoIpRepository;
+use Netesy\Tracker\Data\Repositories\Language;
+use Netesy\Tracker\Data\Repositories\Log;
+use Netesy\Tracker\Data\Repositories\Path;
+use Netesy\Tracker\Data\Repositories\Query;
+use Netesy\Tracker\Data\Repositories\QueryArgument;
+use Netesy\Tracker\Data\Repositories\Referer;
+use Netesy\Tracker\Data\Repositories\Route;
+use Netesy\Tracker\Data\Repositories\RoutePath;
+use Netesy\Tracker\Data\Repositories\RoutePathParameter;
+use Netesy\Tracker\Data\Repositories\Session;
+use Netesy\Tracker\Data\Repositories\SqlQuery;
+use Netesy\Tracker\Data\Repositories\SqlQueryBinding;
+use Netesy\Tracker\Data\Repositories\SqlQueryBindingParameter;
+use Netesy\Tracker\Data\Repositories\SqlQueryLog;
+use Netesy\Tracker\Data\Repositories\SystemClass;
+use Netesy\Tracker\Data\RepositoryManager;
+use Netesy\Tracker\Eventing\EventStorage;
+use Netesy\Tracker\Repositories\Message as MessageRepository;
+use Netesy\Tracker\Services\Authentication;
+use Netesy\Tracker\Support\Cache;
+use Netesy\Tracker\Support\CrawlerDetector;
+use Netesy\Tracker\Support\Exceptions\Handler as TrackerExceptionHandler;
+use Netesy\Tracker\Support\LanguageDetect;
+use Netesy\Tracker\Support\MobileDetect;
+use Netesy\Tracker\Support\UserAgentParser;
+use Netesy\Tracker\Tracker;
+use Netesy\Tracker\Vendor\Laravel\Artisan\Tables as TablesCommand;
+use Netesy\Tracker\Vendor\Laravel\Artisan\UpdateGeoIp;
 
-class ServiceProvider extends PragmaRXServiceProvider
+class ServiceProvider extends NetesyServiceProvider
 {
-    protected $packageVendor = 'pragmarx';
+    protected $packageVendor = 'Netesy';
 
     protected $packageName = 'tracker';
 
@@ -300,7 +300,7 @@ class ServiceProvider extends PragmaRXServiceProvider
                     $refererModel,
                     $refererSearchTermModel,
                     $this->getAppUrl(),
-                    $app->make('PragmaRX\Tracker\Support\RefererParser')
+                    $app->make('Netesy\Tracker\Support\RefererParser')
                 ),
                 $routeRepository,
                 new RoutePath($routePathModel),
@@ -544,7 +544,7 @@ class ServiceProvider extends PragmaRXServiceProvider
      */
     public function getPackageDir()
     {
-        return __DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..';
+        return __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..';
     }
 
     /**
@@ -562,10 +562,10 @@ class ServiceProvider extends PragmaRXServiceProvider
     {
         $me = $this;
 
-        $this->app->make('view')->composer('pragmarx/tracker::*', function ($view) use ($me) {
+        $this->app->make('view')->composer('Netesy/tracker::*', function ($view) use ($me) {
             $view->with('stats_layout', $me->getConfig('stats_layout'));
 
-            $template_path = url('/').$me->getConfig('stats_template_path');
+            $template_path = url('/') . $me->getConfig('stats_template_path');
 
             $view->with('stats_template_path', $template_path);
         });
@@ -597,7 +597,8 @@ class ServiceProvider extends PragmaRXServiceProvider
             $all_bindings_resolved =
                 (!in_array(false, $checked_bindings, true)) ?: false;
 
-            if ($me->tracker &&
+            if (
+                $me->tracker &&
                 !$me->userChecked &&
                 $me->getConfig('log_users') &&
                 $all_bindings_resolved
@@ -621,7 +622,7 @@ class ServiceProvider extends PragmaRXServiceProvider
 
     public function getRootDirectory()
     {
-        return __DIR__.'/../..';
+        return __DIR__ . '/../..';
     }
 
     protected function getAppUrl()
@@ -631,7 +632,7 @@ class ServiceProvider extends PragmaRXServiceProvider
 
     public function loadTranslations()
     {
-        $this->loadTranslationsFrom(__DIR__.'/../../lang', 'tracker');
+        $this->loadTranslationsFrom(__DIR__ . '/../../lang', 'tracker');
     }
 
     /**

@@ -124,7 +124,7 @@ return [
      *
      */
 
-    'geoip_database_path' => __DIR__.'/geoip', //storage_path('geoip'),
+    'geoip_database_path' => __DIR__ . '/geoip', //storage_path('geoip'),
 
     /*
      * Also log SQL query bindings?
@@ -253,61 +253,61 @@ return [
      *      protected $connection = 'mysql';
      * ...
      */
-    'user_model' => 'PragmaRX\Tracker\Vendor\Laravel\Models\User',
+    'user_model' => 'Netesy\Tracker\Vendor\Laravel\Models\User',
 
     /*
      * You can use your own model for every single table Tracker has.
      */
 
-    'session_model' => 'PragmaRX\Tracker\Vendor\Laravel\Models\Session',
+    'session_model' => 'Netesy\Tracker\Vendor\Laravel\Models\Session',
 
-    'log_model' => 'PragmaRX\Tracker\Vendor\Laravel\Models\Log',
+    'log_model' => 'Netesy\Tracker\Vendor\Laravel\Models\Log',
 
-    'path_model' => 'PragmaRX\Tracker\Vendor\Laravel\Models\Path',
+    'path_model' => 'Netesy\Tracker\Vendor\Laravel\Models\Path',
 
-    'query_model' => 'PragmaRX\Tracker\Vendor\Laravel\Models\Query',
+    'query_model' => 'Netesy\Tracker\Vendor\Laravel\Models\Query',
 
-    'query_argument_model' => 'PragmaRX\Tracker\Vendor\Laravel\Models\QueryArgument',
+    'query_argument_model' => 'Netesy\Tracker\Vendor\Laravel\Models\QueryArgument',
 
-    'agent_model' => 'PragmaRX\Tracker\Vendor\Laravel\Models\Agent',
+    'agent_model' => 'Netesy\Tracker\Vendor\Laravel\Models\Agent',
 
-    'device_model' => 'PragmaRX\Tracker\Vendor\Laravel\Models\Device',
+    'device_model' => 'Netesy\Tracker\Vendor\Laravel\Models\Device',
 
-    'cookie_model' => 'PragmaRX\Tracker\Vendor\Laravel\Models\Cookie',
+    'cookie_model' => 'Netesy\Tracker\Vendor\Laravel\Models\Cookie',
 
-    'domain_model' => 'PragmaRX\Tracker\Vendor\Laravel\Models\Domain',
+    'domain_model' => 'Netesy\Tracker\Vendor\Laravel\Models\Domain',
 
-    'referer_model' => 'PragmaRX\Tracker\Vendor\Laravel\Models\Referer',
+    'referer_model' => 'Netesy\Tracker\Vendor\Laravel\Models\Referer',
 
-    'referer_search_term_model' => 'PragmaRX\Tracker\Vendor\Laravel\Models\RefererSearchTerm',
+    'referer_search_term_model' => 'Netesy\Tracker\Vendor\Laravel\Models\RefererSearchTerm',
 
-    'route_model' => 'PragmaRX\Tracker\Vendor\Laravel\Models\Route',
+    'route_model' => 'Netesy\Tracker\Vendor\Laravel\Models\Route',
 
-    'route_path_model' => 'PragmaRX\Tracker\Vendor\Laravel\Models\RoutePath',
+    'route_path_model' => 'Netesy\Tracker\Vendor\Laravel\Models\RoutePath',
 
-    'route_path_parameter_model' => 'PragmaRX\Tracker\Vendor\Laravel\Models\RoutePathParameter',
+    'route_path_parameter_model' => 'Netesy\Tracker\Vendor\Laravel\Models\RoutePathParameter',
 
-    'error_model' => 'PragmaRX\Tracker\Vendor\Laravel\Models\Error',
+    'error_model' => 'Netesy\Tracker\Vendor\Laravel\Models\Error',
 
-    'geoip_model' => 'PragmaRX\Tracker\Vendor\Laravel\Models\GeoIp',
+    'geoip_model' => 'Netesy\Tracker\Vendor\Laravel\Models\GeoIp',
 
-    'sql_query_model' => 'PragmaRX\Tracker\Vendor\Laravel\Models\SqlQuery',
+    'sql_query_model' => 'Netesy\Tracker\Vendor\Laravel\Models\SqlQuery',
 
-    'sql_query_binding_model' => 'PragmaRX\Tracker\Vendor\Laravel\Models\SqlQueryBinding',
+    'sql_query_binding_model' => 'Netesy\Tracker\Vendor\Laravel\Models\SqlQueryBinding',
 
-    'sql_query_binding_parameter_model' => 'PragmaRX\Tracker\Vendor\Laravel\Models\SqlQueryBindingParameter',
+    'sql_query_binding_parameter_model' => 'Netesy\Tracker\Vendor\Laravel\Models\SqlQueryBindingParameter',
 
-    'sql_query_log_model' => 'PragmaRX\Tracker\Vendor\Laravel\Models\SqlQueryLog',
+    'sql_query_log_model' => 'Netesy\Tracker\Vendor\Laravel\Models\SqlQueryLog',
 
-    'connection_model' => 'PragmaRX\Tracker\Vendor\Laravel\Models\Connection',
+    'connection_model' => 'Netesy\Tracker\Vendor\Laravel\Models\Connection',
 
-    'event_model' => 'PragmaRX\Tracker\Vendor\Laravel\Models\Event',
+    'event_model' => 'Netesy\Tracker\Vendor\Laravel\Models\Event',
 
-    'event_log_model' => 'PragmaRX\Tracker\Vendor\Laravel\Models\EventLog',
+    'event_log_model' => 'Netesy\Tracker\Vendor\Laravel\Models\EventLog',
 
-    'system_class_model' => 'PragmaRX\Tracker\Vendor\Laravel\Models\SystemClass',
+    'system_class_model' => 'Netesy\Tracker\Vendor\Laravel\Models\SystemClass',
 
-    'language_model' => 'PragmaRX\Tracker\Vendor\Laravel\Models\Language',
+    'language_model' => 'Netesy\Tracker\Vendor\Laravel\Models\Language',
 
     /*
      * Laravel internal variables on user authentication and login.
@@ -365,12 +365,12 @@ return [
     /*
      * Stats Panel layout view
      */
-    'stats_layout' => 'pragmarx/tracker::layout',
+    'stats_layout' => 'Netesy/tracker::layout',
 
     /*
      * Stats Panel controllers namespace
      */
-    'stats_controllers_namespace' => 'PragmaRX\Tracker\Vendor\Laravel\Controllers',
+    'stats_controllers_namespace' => 'Netesy\Tracker\Vendor\Laravel\Controllers',
 
     /*
      * Set a default user agent

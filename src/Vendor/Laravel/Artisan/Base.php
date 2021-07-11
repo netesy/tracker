@@ -1,6 +1,6 @@
 <?php
 
-namespace PragmaRX\Tracker\Vendor\Laravel\Artisan;
+namespace Netesy\Tracker\Vendor\Laravel\Artisan;
 
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputArgument;

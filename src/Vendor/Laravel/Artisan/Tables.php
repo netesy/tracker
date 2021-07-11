@@ -1,6 +1,6 @@
 <?php
 
-namespace PragmaRX\Tracker\Vendor\Laravel\Artisan;
+namespace Netesy\Tracker\Vendor\Laravel\Artisan;
 
 class Tables extends Base
 {
@@ -55,7 +55,7 @@ class Tables extends Base
     {
         $ds = DIRECTORY_SEPARATOR;
 
-        return __DIR__."{$ds}..{$ds}..{$ds}..{$ds}migrations";
+        return __DIR__ . "{$ds}..{$ds}..{$ds}..{$ds}migrations";
     }
 
     /**
@@ -65,7 +65,7 @@ class Tables extends Base
      */
     protected function getBaseMigrationsPath()
     {
-        $path = 'database'.DIRECTORY_SEPARATOR.'migrations';
+        $path = 'database' . DIRECTORY_SEPARATOR . 'migrations';
 
         return base_path($path);
     }
@@ -79,6 +79,6 @@ class Tables extends Base
      */
     private function makeMigrationPath($file)
     {
-        return $this->getBaseMigrationsPath().DIRECTORY_SEPARATOR.basename($file);
+        return $this->getBaseMigrationsPath() . DIRECTORY_SEPARATOR . basename($file);
     }
 }

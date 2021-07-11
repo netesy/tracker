@@ -1,11 +1,11 @@
 <?php
 
-namespace PragmaRX\Tracker\Support;
+namespace Netesy\Tracker\Support;
 
 use Cache as IlluminateCache;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Application;
-use PragmaRX\Support\Config as Config;
+use Netesy\Support\Config as Config;
 
 class Cache
 {

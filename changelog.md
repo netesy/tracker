@@ -124,7 +124,7 @@
 - Tracker::trackVisit()
 - Tracker::trackEvent()
 ### Changed
-- Move to UA-PHP instead of PragmaRX/UaParser
+- Move to UA-PHP instead of Netesy/UaParser
 - Using a better bot detector 
 ### Fixed
 - Correctly get the application url

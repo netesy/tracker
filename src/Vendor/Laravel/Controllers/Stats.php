@@ -1,13 +1,13 @@
 <?php
 
-namespace PragmaRX\Tracker\Vendor\Laravel\Controllers;
+namespace Netesy\Tracker\Vendor\Laravel\Controllers;
 
 use Bllim\Datatables\Facade\Datatables;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Str;
-use PragmaRX\Tracker\Vendor\Laravel\Facade as Tracker;
-use PragmaRX\Tracker\Vendor\Laravel\Support\Session;
+use Netesy\Tracker\Vendor\Laravel\Facade as Tracker;
+use Netesy\Tracker\Vendor\Laravel\Support\Session;
 
 class Stats extends Controller
 {
@@ -26,15 +26,15 @@ class Stats extends Controller
     public function index(Session $session)
     {
         if (!$this->isAuthenticated()) {
-            return View::make('pragmarx/tracker::message')->with('message', trans('tracker::tracker.auth_required'));
+            return View::make('Netesy/tracker::message')->with('message', trans('tracker::tracker.auth_required'));
         }
 
         if (!$this->hasAdminProperty()) {
-            return View::make('pragmarx/tracker::message')->with('message', trans('tracker::tracker.miss_admin_prop'));
+            return View::make('Netesy/tracker::message')->with('message', trans('tracker::tracker.miss_admin_prop'));
         }
 
         if (!$this->isAdmin()) {
-            return View::make('pragmarx/tracker::message')->with('message', trans('tracker::tracker.not_admin'));
+            return View::make('Netesy/tracker::message')->with('message', trans('tracker::tracker.not_admin'));
         }
 
         return $this->showPage($session, $session->getValue('page'));
@@ -55,40 +55,40 @@ class Stats extends Controller
     public function visits(Session $session)
     {
         $datatables_data =
-        [
-            'datatables_ajax_route' => route('tracker.stats.api.visits'),
-            'datatables_columns'    => '
-                { "data" : "id",          "title" : "'.trans('tracker::tracker.id').'", "orderable": true, "searchable": true },
-                { "data" : "client_ip",   "title" : "'.trans('tracker::tracker.ip_address').'", "orderable": true, "searchable": true },
-                { "data" : "country",     "title" : "'.trans('tracker::tracker.country_city').'", "orderable": true, "searchable": true },
-                { "data" : "user",        "title" : "'.trans('tracker::tracker.user').'", "orderable": true, "searchable": true },
-                { "data" : "device",      "title" : "'.trans('tracker::tracker.device').'", "orderable": true, "searchable": true },
-                { "data" : "browser",     "title" : "'.trans('tracker::tracker.browser').'", "orderable": true, "searchable": true },
-                { "data" : "language",    "title" : "'.trans('tracker::tracker.language').'", "orderable": true, "searchable": true },
-                { "data" : "referer",     "title" : "'.trans('tracker::tracker.referer').'", "orderable": true, "searchable": true },
-                { "data" : "pageViews",   "title" : "'.trans('tracker::tracker.page_views').'", "orderable": true, "searchable": true },
-                { "data" : "lastActivity","title" : "'.trans('tracker::tracker.last_activity').'", "orderable": true, "searchable": true },
+            [
+                'datatables_ajax_route' => route('tracker.stats.api.visits'),
+                'datatables_columns'    => '
+                { "data" : "id",          "title" : "' . trans('tracker::tracker.id') . '", "orderable": true, "searchable": true },
+                { "data" : "client_ip",   "title" : "' . trans('tracker::tracker.ip_address') . '", "orderable": true, "searchable": true },
+                { "data" : "country",     "title" : "' . trans('tracker::tracker.country_city') . '", "orderable": true, "searchable": true },
+                { "data" : "user",        "title" : "' . trans('tracker::tracker.user') . '", "orderable": true, "searchable": true },
+                { "data" : "device",      "title" : "' . trans('tracker::tracker.device') . '", "orderable": true, "searchable": true },
+                { "data" : "browser",     "title" : "' . trans('tracker::tracker.browser') . '", "orderable": true, "searchable": true },
+                { "data" : "language",    "title" : "' . trans('tracker::tracker.language') . '", "orderable": true, "searchable": true },
+                { "data" : "referer",     "title" : "' . trans('tracker::tracker.referer') . '", "orderable": true, "searchable": true },
+                { "data" : "pageViews",   "title" : "' . trans('tracker::tracker.page_views') . '", "orderable": true, "searchable": true },
+                { "data" : "lastActivity","title" : "' . trans('tracker::tracker.last_activity') . '", "orderable": true, "searchable": true },
             ',
-        ];
+            ];
 
-        return View::make('pragmarx/tracker::index')
+        return View::make('Netesy/tracker::index')
             ->with('sessions', Tracker::sessions($session->getMinutes()))
-            ->with('title', ''.trans('tracker::tracker.visits').'')
+            ->with('title', '' . trans('tracker::tracker.visits') . '')
             ->with('username_column', Tracker::getConfig('authenticated_user_username_column'))
             ->with('datatables_data', $datatables_data);
     }
 
     public function log($uuid)
     {
-        return View::make('pragmarx/tracker::log')
-                ->with('uuid', $uuid)
-                ->with('title', 'log');
+        return View::make('Netesy/tracker::log')
+            ->with('uuid', $uuid)
+            ->with('title', 'log');
     }
 
     public function summary()
     {
-        return View::make('pragmarx/tracker::summary')
-                ->with('title', ''.trans('tracker::tracker.page_views_summary').'');
+        return View::make('Netesy/tracker::summary')
+            ->with('title', '' . trans('tracker::tracker.page_views_summary') . '');
     }
 
     public function apiPageviews(Session $session)
@@ -125,8 +125,8 @@ class Stats extends Controller
                 $path = $row->routePath;
 
                 return    $row->routePath
-                            ? $row->routePath->route->name.'<br>'.$row->routePath->route->action
-                            : ($row->path ? $row->path->path : '');
+                    ? $row->routePath->route->name . '<br>' . $row->routePath->route->action
+                    : ($row->path ? $row->path->path : '');
             })
 
             ->edit_column('route', function ($row) {
@@ -134,7 +134,7 @@ class Stats extends Controller
 
                 if ($row->routePath) {
                     foreach ($row->routePath->parameters as $parameter) {
-                        $route .= ($route ? '<br>' : '').$parameter->parameter.'='.$parameter->value;
+                        $route .= ($route ? '<br>' : '') . $parameter->parameter . '=' . $parameter->value;
                     }
                 }
 
@@ -146,7 +146,7 @@ class Stats extends Controller
 
                 if ($row->logQuery) {
                     foreach ($row->logQuery->arguments as $argument) {
-                        $query .= ($query ? '<br>' : '').$argument->argument.'='.$argument->value;
+                        $query .= ($query ? '<br>' : '') . $argument->argument . '=' . $argument->value;
                     }
                 }
 
@@ -178,24 +178,24 @@ class Stats extends Controller
 
     public function users(Session $session)
     {
-        return View::make('pragmarx/tracker::users')
+        return View::make('Netesy/tracker::users')
             ->with('users', Tracker::users($session->getMinutes()))
-            ->with('title', ''.trans('tracker::tracker.users').'')
+            ->with('title', '' . trans('tracker::tracker.users') . '')
             ->with('username_column', Tracker::getConfig('authenticated_user_username_column'));
     }
 
     private function events(Session $session)
     {
-        return View::make('pragmarx/tracker::events')
+        return View::make('Netesy/tracker::events')
             ->with('events', Tracker::events($session->getMinutes()))
-            ->with('title', ''.trans('tracker::tracker.events').'');
+            ->with('title', '' . trans('tracker::tracker.events') . '');
     }
 
     public function errors(Session $session)
     {
-        return View::make('pragmarx/tracker::errors')
+        return View::make('Netesy/tracker::errors')
             ->with('error_log', Tracker::errors($session->getMinutes()))
-            ->with('title', ''.trans('tracker::tracker.errors').'');
+            ->with('title', '' . trans('tracker::tracker.errors') . '');
     }
 
     public function apiErrors(Session $session)
@@ -211,10 +211,10 @@ class Stats extends Controller
         ]);
 
         return Datatables::of($query)
-                ->edit_column('updated_at', function ($row) {
-                    return "{$row->updated_at->diffForHumans()}";
-                })
-                ->make(true);
+            ->edit_column('updated_at', function ($row) {
+                return "{$row->updated_at->diffForHumans()}";
+            })
+            ->make(true);
     }
 
     public function apiEvents(Session $session)
@@ -229,13 +229,13 @@ class Stats extends Controller
         $username_column = Tracker::getConfig('authenticated_user_username_column');
 
         return Datatables::of(Tracker::users($session->getMinutes(), false))
-                ->edit_column('user_id', function ($row) use ($username_column) {
-                    return "{$row->user->$username_column}";
-                })
-                ->edit_column('updated_at', function ($row) {
-                    return "{$row->updated_at->diffForHumans()}";
-                })
-                ->make(true);
+            ->edit_column('user_id', function ($row) use ($username_column) {
+                return "{$row->user->$username_column}";
+            })
+            ->edit_column('updated_at', function ($row) {
+                return "{$row->updated_at->diffForHumans()}";
+            })
+            ->make(true);
     }
 
     public function apiVisits(Session $session)
@@ -260,67 +260,67 @@ class Stats extends Controller
         ]);
 
         return Datatables::of($query)
-                ->edit_column('id', function ($row) {
-                    $uri = route('tracker.stats.log', $row->uuid);
+            ->edit_column('id', function ($row) {
+                $uri = route('tracker.stats.log', $row->uuid);
 
-                    return '<a href="'.$uri.'">'.$row->id.'</a>';
-                })
+                return '<a href="' . $uri . '">' . $row->id . '</a>';
+            })
 
-                ->add_column('country', function ($row) {
-                    $cityName = $row->geoip && $row->geoip->city ? ' - '.$row->geoip->city : '';
+            ->add_column('country', function ($row) {
+                $cityName = $row->geoip && $row->geoip->city ? ' - ' . $row->geoip->city : '';
 
-                    $countryName = ($row->geoip ? $row->geoip->country_name : '').$cityName;
+                $countryName = ($row->geoip ? $row->geoip->country_name : '') . $cityName;
 
-                    $countryCode = strtolower($row->geoip ? $row->geoip->country_code : '');
+                $countryCode = strtolower($row->geoip ? $row->geoip->country_code : '');
 
-                    $flag = $countryCode
-                            ? "<span class=\"f16\"><span class=\"flag $countryCode\" alt=\"$countryName\" /></span></span>"
-                            : '';
+                $flag = $countryCode
+                    ? "<span class=\"f16\"><span class=\"flag $countryCode\" alt=\"$countryName\" /></span></span>"
+                    : '';
 
-                    return "$flag $countryName";
-                })
+                return "$flag $countryName";
+            })
 
-                ->add_column('user', function ($row) use ($username_column) {
-                    return $row->user ? $row->user->$username_column : 'guest';
-                })
+            ->add_column('user', function ($row) use ($username_column) {
+                return $row->user ? $row->user->$username_column : 'guest';
+            })
 
-                ->add_column('device', function ($row) {
-                    $model = ($row->device && $row->device->model && $row->device->model !== 'unavailable' ? '['.$row->device->model.']' : '');
+            ->add_column('device', function ($row) {
+                $model = ($row->device && $row->device->model && $row->device->model !== 'unavailable' ? '[' . $row->device->model . ']' : '');
 
-                    $platform = ($row->device && $row->device->platform ? ' ['.trim($row->device->platform.' '.$row->device->platform_version).']' : '');
+                $platform = ($row->device && $row->device->platform ? ' [' . trim($row->device->platform . ' ' . $row->device->platform_version) . ']' : '');
 
-                    $mobile = ($row->device && $row->device->is_mobile ? ' [mobile device]' : '');
+                $mobile = ($row->device && $row->device->is_mobile ? ' [mobile device]' : '');
 
-                    return $model || $platform || $mobile
-                            ? $row->device->kind.' '.$model.' '.$platform.' '.$mobile
-                            : '';
-                })
+                return $model || $platform || $mobile
+                    ? $row->device->kind . ' ' . $model . ' ' . $platform . ' ' . $mobile
+                    : '';
+            })
 
-                ->add_column('browser', function ($row) {
-                    return $row->agent && $row->agent
-                            ? $row->agent->browser.' ('.$row->agent->browser_version.')'
-                            : '';
-                })
+            ->add_column('browser', function ($row) {
+                return $row->agent && $row->agent
+                    ? $row->agent->browser . ' (' . $row->agent->browser_version . ')'
+                    : '';
+            })
 
-                ->add_column('language', function ($row) {
-                    return $row->language && $row->language
-                        ? $row->language->preference
-                        : '';
-                })
+            ->add_column('language', function ($row) {
+                return $row->language && $row->language
+                    ? $row->language->preference
+                    : '';
+            })
 
-                ->add_column('referer', function ($row) {
-                    return $row->referer ? $row->referer->domain->name : '';
-                })
+            ->add_column('referer', function ($row) {
+                return $row->referer ? $row->referer->domain->name : '';
+            })
 
-                ->add_column('pageViews', function ($row) {
-                    return $row->page_views;
-                })
+            ->add_column('pageViews', function ($row) {
+                return $row->page_views;
+            })
 
-                ->add_column('lastActivity', function ($row) {
-                    return $row->updated_at->diffForHumans();
-                })
+            ->add_column('lastActivity', function ($row) {
+                return $row->updated_at->diffForHumans();
+            })
 
-                ->make(true);
+            ->make(true);
     }
 
     private function isAuthenticated()
@@ -336,10 +336,10 @@ class Stats extends Controller
             $propertyCamel = Str::camel($property);
 
             if (
-                    isset($user->$property) ||
-                    isset($user->$propertyCamel) ||
-                    method_exists($user, $property) ||
-                    method_exists($user, $propertyCamel)
+                isset($user->$property) ||
+                isset($user->$propertyCamel) ||
+                method_exists($user, $property) ||
+                method_exists($user, $propertyCamel)
             ) {
                 return true;
             }

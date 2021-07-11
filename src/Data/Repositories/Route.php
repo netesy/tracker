@@ -1,8 +1,8 @@
 <?php
 
-namespace PragmaRX\Tracker\Data\Repositories;
+namespace Netesy\Tracker\Data\Repositories;
 
-use PragmaRX\Support\Config;
+use Netesy\Support\Config;
 
 class Route extends Repository
 {

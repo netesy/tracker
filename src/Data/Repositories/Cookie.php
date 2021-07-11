@@ -1,10 +1,10 @@
 <?php
 
-namespace PragmaRX\Tracker\Data\Repositories;
+namespace Netesy\Tracker\Data\Repositories;
 
 use Illuminate\Cookie\CookieJar;
 use Illuminate\Http\Request;
-use PragmaRX\Support\Config;
+use Netesy\Support\Config;
 use Ramsey\Uuid\Uuid as UUID;
 
 class Cookie extends Repository

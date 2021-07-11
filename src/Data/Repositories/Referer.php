@@ -1,8 +1,8 @@
 <?php
 
-namespace PragmaRX\Tracker\Data\Repositories;
+namespace Netesy\Tracker\Data\Repositories;
 
-use PragmaRX\Tracker\Support\RefererParser;
+use Netesy\Tracker\Support\RefererParser;
 
 class Referer extends Repository
 {
